@@ -16,7 +16,7 @@ router.route("/register").post(
 
 )
 
-router.route("/login").post(login)
+router.route("/login").post( verifyToken,login)
 router.route("/verify-email").get(verifyEmail)
 
 export default router;

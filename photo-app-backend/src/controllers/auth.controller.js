@@ -156,13 +156,16 @@ const login = asyncHandler(async (req, res) => {
 
     const { accessToken, refreshToken } = await generateAcceccAndRefreshTokens(user._id);
 
+    if(!user.isVerified) {
+        throw new ApiError(401, "Please verify your email before logging in");
+    }
+
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken");
 
     const options = {
         httpOnly: true,
         secure: true,
     }
-
     return res
         .cookie("refreshToken", refreshToken, options)
         .status(200)

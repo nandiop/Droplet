@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-const sendVerificationEmail = async ({ to, name, subject, text }) => {
+const sendVerificationEmail = async ({ to, name, url }) => {
     await transporter.senderEmail({
         from : process.env.EMAIL_USER,
         to,
