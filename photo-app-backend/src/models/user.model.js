@@ -50,10 +50,7 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    verificationToken: String,
-    verificationTokenExpiry: Date,
-
-
+   
     }, {
 
         timestamps: true,
@@ -78,37 +75,35 @@ const userSchema = new mongoose.Schema({
     };
 
     // Method to generate a new access token
-
-    userSchema.methods.generateAccessToken = async function(){
+    userSchema.methods.generateAccessToken = async function() {
         return jwt.sign(
             {
                 _id: this._id,
                 username: this.username,
                 email: this.email,
-                fullname: this.fullname,
+                fullname: this.fullname
             },
-            process.env.ACCESS_TOKEN_SECRETE,
+            process.env.ACCESS_TOKEN_SECRET,
             {
-                expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
+                expiresIn: process.env.ACCESS_TOKEN_EXPIRY
             }
-        )
+        );
     };
 
-     // Method to generate a new refresh token
-
-    userSchema.methods.generateRefreshToken = async function(){
+    // Method to generate a new refresh token
+    userSchema.methods.generateRefreshToken = async function() {
         return jwt.sign(
             {
                 _id: this._id,
                 username: this.username,
                 email: this.email,
-                fullname: this.fullname,
+                fullname: this.fullname
             },
-            process.env.REFRESH_TOKEN_SECRETE,
+            process.env.REFRESH_TOKEN_SECRET,
             {
-                expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
+                expiresIn: process.env.REFRESH_TOKEN_EXPIRY
             }
-        )
+        );
     };
 
 
