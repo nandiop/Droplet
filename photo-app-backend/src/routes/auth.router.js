@@ -1,8 +1,11 @@
 import { Router } from "express";
 import multer from "multer";
-import { register, login } from "../controllers/auth.controller.js";
+import { register, login, getCurrentUser } from "../controllers/auth.controller.js";
 import { upload } from "../middleware/middlewear.multer.js";
 import verifyToken from "../middleware/auth.middlewear.js";
+import { uploadFile , getFiles} from "../controllers/file.controller.js";
+import uploadFolder from "../controllers/folder.controller.js";
+import { uploadS3 } from "../middleware/middlewear.multer.js";
 
 const router = Router();
 
@@ -48,5 +51,19 @@ router.route("/register").post(
 );
 
 router.route("/login").post(login); // ✅ No token required here
+router.route("/current-user").get(verifyToken,getCurrentUser);
+
+
+router.route("/upload-file").post(verifyToken,
+  uploadS3.single("file"),
+  uploadFile
+); // ✅ Token required
+
+router.route("/upload-folder").post(verifyToken, 
+  uploadS3.single("folder"), 
+  uploadFolder); // ✅ Token required
+
+  router.route("/get-files").get(verifyToken, getFiles)
+
 
 export default router;
