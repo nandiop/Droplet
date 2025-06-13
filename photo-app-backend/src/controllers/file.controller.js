@@ -16,7 +16,7 @@ const uploadFile = asyncHandler(async (req, res) => {
         if (!file) {
             throw new ApiError(400, "File is required");
         }
-        let filePth;
+        let filePath;
 
         //S3 upload
 

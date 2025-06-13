@@ -10,7 +10,7 @@ const createFolder = asyncHandler(async (req, res) => {
         const userId = req.user._id;
         if (!name) {
             throw new ApiError(400, "Folder name is required");
-        }
+        }                                                   
 
         if(parentId){
             const parentFolder = await Folder.findById(parentId);

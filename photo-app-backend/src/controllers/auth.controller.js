@@ -76,7 +76,7 @@ const register = asyncHandler(async (req, res) => {
   await newUser.save(); // ✅ Save to DB
   return res
     .status(201)
-    .json(new ApiResponse(201, "User created successfully. Please verify your email."));
+    .json(new ApiResponse(201, "User created successfully."));
 });
 
 
@@ -114,20 +114,10 @@ const login = asyncHandler(async (req, res) => {
                 accessToken
             },"Login successful")
         );
-});
-
-const getCurrentUser = asyncHandler(async (req, res) => {
-  return res.status(200).json(
-    new ApiResponse(200, "Current user fetched successfully", {
-      user: req.user,
-    })
-  );
-
 })
 
 
 export {
     register,
     login,
-    getCurrentUser,
 }
