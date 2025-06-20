@@ -45,6 +45,10 @@ const fileSchema = new mongoose.Schema({
     type: Date,
     default: null, // optional expiration
   },
+  isStarred:{
+    type: Boolean,
+    default: false
+  }
 });
 
 const File = mongoose.model("File", fileSchema);

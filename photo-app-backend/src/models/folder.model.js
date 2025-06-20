@@ -33,6 +33,10 @@ const folderSchema = new mongoose.Schema({
     type: Date,
     default: null,
   },
+    isStarred:{
+    type: Boolean,
+    default: false
+  }
 });
 const Folder = mongoose.model("Folder", folderSchema);
 export default Folder;
