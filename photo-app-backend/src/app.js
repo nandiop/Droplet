@@ -21,11 +21,15 @@ app.use(express.static("public")); // Serve static files from the "public" direc
 import router from "./routes/auth.router.js";
 import fileRouter from "./routes/file.router.js";
 import starredRouter from "./routes/starred.router.js";
+import trashRouter from "./routes/trash.router.js";
+import activityRouter from "./routes/activity.router.js";
 
 
 app.use("/api/v1/user", router); // htttp//localhost:5000/api/v1/user/register
 app.use("/api/v1/file", fileRouter); // http://localhost:5000/api/v1/file/upload
 app.use("/api/v1/is-starred", starredRouter);
+app.use("api/v1/trash",trashRouter)
+app.use("/api/v1/activity", activityRouter)
 
 // Error handling middleware
 app.use((err, req, res, next) => {

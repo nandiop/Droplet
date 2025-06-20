@@ -36,7 +36,16 @@ const folderSchema = new mongoose.Schema({
     isStarred:{
     type: Boolean,
     default: false
-  }
+  },
+  isTrashed: {
+  type: Boolean,
+  default: false,
+},
+trashedAt: {
+  type: Date,
+  default: null,
+}
+
 });
 const Folder = mongoose.model("Folder", folderSchema);
 export default Folder;

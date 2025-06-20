@@ -48,7 +48,16 @@ const fileSchema = new mongoose.Schema({
   isStarred:{
     type: Boolean,
     default: false
-  }
+  },
+  isTrashed: {
+  type: Boolean,
+  default: false,
+},
+trashedAt: {
+  type: Date,
+  default: null,
+}
+
 });
 
 const File = mongoose.model("File", fileSchema);
