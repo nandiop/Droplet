@@ -24,6 +24,7 @@ import starredRouter from "./routes/starred.router.js";
 import trashRouter from "./routes/trash.router.js";
 import activityRouter from "./routes/activity.router.js";
 import noteRouter from "./routes/note.router.js";
+import LockerRouter from "./routes/locker.router.js";
 
 
 app.use("/api/v1/user", router); // htttp//localhost:5000/api/v1/user/register
@@ -32,6 +33,7 @@ app.use("/api/v1/is-starred", starredRouter);
 app.use("api/v1/trash",trashRouter)
 app.use("/api/v1/activity", activityRouter);
 app.use("/api/v1/notes", noteRouter);
+app.use("/api/v1/locker", LockerRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

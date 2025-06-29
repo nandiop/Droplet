@@ -44,6 +44,10 @@ const folderSchema = new mongoose.Schema({
 trashedAt: {
   type: Date,
   default: null,
+},
+isLocker: {
+  type: Boolean,
+  default: false,
 }
 
 });
